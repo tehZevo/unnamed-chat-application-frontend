@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
+import MessageField from "./MessageField";
+import ServerField from "./ServerField";
+import Message from "./Message";
+
+
 
 function App() {
+  const [socket, setSocket] = useState(null)
+  const [isConnected, setIsConnected] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [host, setHost] = useState("http://localhost:8080")
+
+  useEffect(() => {
+    const socket = io(host);
+    setSocket(socket);
+
+    console.log("hello!")
+    socket.on('connect', () => {
+      setIsConnected(true);
+    });
+
+    socket.on('disconnect', () => {
+      setIsConnected(false);
+    });
+
+    socket.on('message', (message) => {
+      console.log("whoa cool a message:", message)
+      setMessages((oldMessages) => [...oldMessages, message]);
+    });
+
+    return () => {
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('message');
+      setIsConnected(false)
+    };
+  }, [host]);
+
+  const sendPing = () => {
+    socket.emit('ping');
+  }
+
+  //TODO: useApi hook?
+  //pass sendMessage function to messageField
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Connected: { '' + isConnected }</p>
+      <ServerField host={host} setHost={setHost} />
+      <MessageField host={host} />
+      {messages.map((e) => <Message key={e.id} content={e.content} />)}
     </div>
   );
 }
