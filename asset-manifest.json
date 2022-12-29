@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/unnamed-chat-application-frontend/static/css/main.073c9b0a.css",
-    "main.js": "/unnamed-chat-application-frontend/static/js/main.6165381a.js",
+    "main.css": "/unnamed-chat-application-frontend/static/css/main.e6c13ad2.css",
+    "main.js": "/unnamed-chat-application-frontend/static/js/main.72373c68.js",
     "static/js/787.ab6ecd42.chunk.js": "/unnamed-chat-application-frontend/static/js/787.ab6ecd42.chunk.js",
-    "static/media/logo.svg": "/unnamed-chat-application-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/unnamed-chat-application-frontend/index.html",
-    "main.073c9b0a.css.map": "/unnamed-chat-application-frontend/static/css/main.073c9b0a.css.map",
-    "main.6165381a.js.map": "/unnamed-chat-application-frontend/static/js/main.6165381a.js.map",
+    "main.e6c13ad2.css.map": "/unnamed-chat-application-frontend/static/css/main.e6c13ad2.css.map",
+    "main.72373c68.js.map": "/unnamed-chat-application-frontend/static/js/main.72373c68.js.map",
     "787.ab6ecd42.chunk.js.map": "/unnamed-chat-application-frontend/static/js/787.ab6ecd42.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.6165381a.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.72373c68.js"
   ]
 }
